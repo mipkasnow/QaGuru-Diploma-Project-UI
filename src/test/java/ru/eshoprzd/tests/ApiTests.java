@@ -7,6 +7,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -30,6 +31,7 @@ public class ApiTests {
         RestAssured.baseURI = "https://eshoprzd.ru/rest";
     }
 
+    @Tag("regress")
     @Feature("Апи тесты")
     @Owner("Mikhail")
     @DisplayName("Поиск единственной закупки")
