@@ -79,6 +79,9 @@
 </p>
 
 ## :film_projector: Видео прохождения тестов на Selenoid
+>
+> <code>Selenoid</code> пишет видео прогона каждого теста и видео прикладывается в отчет <code>Allure</code>
+>
 <p>
 <img title="Selenoid Video" src="images/Selenoid.gif" alt="video">
 </p>
