@@ -10,7 +10,10 @@ repositories {
 def selenideVersion = '6.2.1',
     junitVersion = '5.8.2',
     slf4jVersion = '1.7.33',
-    allureVersion = "2.17.2"
+    allureVersion = "2.17.2",
+        restAssured = '4.4.0',
+        jsonVersion = '20211205',
+        jacksonVersion = '2.13.1'
 
 allure {
     report {
@@ -29,6 +32,11 @@ allure {
 
 dependencies {
     testImplementation(
+            "io.rest-assured:rest-assured:$restAssured",
+            "io.rest-assured:json-schema-validator:$restAssured",
+            "org.json:json:$jsonVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.assertj:assertj-core:3.22.0",
             "io.qameta.allure:allure-selenide:$allureVersion",
             "com.github.javafaker:javafaker:1.0.2",
