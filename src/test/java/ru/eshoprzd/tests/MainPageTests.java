@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.eshoprzd.data.Data.*;
 
-@DisplayName("Класс тестов элементов открытой части сайта")
+@DisplayName("Класс UI тестов открытой части сайта")
 public class MainPageTests extends BaseTest{
 
     MainPage step = new MainPage();
@@ -26,7 +26,7 @@ public class MainPageTests extends BaseTest{
     @Tag("regress")
     @Owner("Mikhail")
     @ValueSource(strings = {purchase1, purchase2})
-    @DisplayName("Поиск закупки на открытой части сайта")
+    @DisplayName("Поиск закупки")
     @ParameterizedTest(name = "Ценовой запрос {0}")
     public void searchPurchaseTest(String searchValue){
         step.open223FzSection();
@@ -37,7 +37,7 @@ public class MainPageTests extends BaseTest{
         $$(".purchase-item").shouldHave(size(1));
     }
 
-    @DisplayName("Поиск новости на открытой части сайта")
+    @DisplayName("Поиск новости")
     @Tag("regress")
     @Owner("Mikhail")
     @Test
