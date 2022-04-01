@@ -15,7 +15,6 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.url;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.eshoprzd.data.Data.*;
 
@@ -67,6 +66,18 @@ public class MainPageTests extends BaseTest{
         $$(".purchase-item").shouldHave(size(20));
     }
 
+    @Tag("regress")
+    @DisplayName("Проверка карточки компании")
+    @Owner("Mikhail")
+    @Test
+    public void checkCompanyCardTest() {
+        step.openCompanySection();
+        switchTo().window(1);
+        $(".cardName ").click();
+
+        $(withText("Акционерное общество «УДОСТОВЕРЯЮЩИЙ ЦЕНТР» предлагает эффективные решения, которые позволят Вам")).should(appear);
+    }
+
     @DisplayName("Проверка некорректного логина")
     @Tag("regress")
     @Owner("Mikhail")
@@ -92,17 +103,15 @@ public class MainPageTests extends BaseTest{
     }
 
     @Tag("regress")
-    @DisplayName("Проверка карточки компании")
+    @DisplayName("Отправка контактов без капчи")
     @Owner("Mikhail")
     @Test
-    public void checkCompanyCardTest(){
-        step.openCompanySection();
-        switchTo().window(1);
-        $(".cardName ").click();
-        $("[logger-ui='COMPANY_REDIRECT']").click();
-        switchTo().window(2);
+    public void trySendContactsWithOutCaptcha(){
+        open("contacts");
+        step.fillContactsForm();
 
-        webdriver().shouldHave(url("https://nwudc.ru/"));
+        $(byText("Отправить")).click();
+        $(".ngdialog-content").$(byText("Неверно указана CAPTCHA")).should(appear);
     }
 
     @Disabled
@@ -113,7 +122,6 @@ public class MainPageTests extends BaseTest{
     public void skippedTest(){
         System.out.println("Тест пропущен");
     }
-
 
     @Tag("regress")
     @Owner("Mikhail")

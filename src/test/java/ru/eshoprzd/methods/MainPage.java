@@ -1,14 +1,16 @@
 package ru.eshoprzd.methods;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
+import org.joda.time.DateTime;
 import ru.eshoprzd.tools.LoadingBar;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
 
 public class MainPage {
 
+    Faker faker = new Faker();
     public static final String ENTER_SITE = "#login-btn";
 
     @Step("Открытие раздела новостей")
@@ -54,5 +56,21 @@ public class MainPage {
     @Step("Открытие раздела компаний")
     public void openCompanySection(){
         $("#mainMenu [ui-sref='companies']").click();
+    }
+
+    @Step("Заполнение формы обратной связи")
+    public void fillContactsForm(){
+        String phone = Long.toString(faker.number().numberBetween(1, 1000000000));
+        String text = faker.witcher().monster() + " " + faker.witcher().school();
+        String email = "autotest+" + new DateTime().toString("ddMMHHmmss") + "@yandex.ru";
+
+        $("#theme").selectOptionByValue("Прочие вопросы");
+        $("#name").setValue(faker.name().fullName());
+        $("#email").setValue(email);
+        $("#phone").setValue(phone);
+        $("#consentProcessing").click();
+        $("#consentDissemination").click();
+        $("#text").setValue(text);
+        $("#captcha").setValue("123");
     }
 }
