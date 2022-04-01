@@ -20,6 +20,7 @@
 <a href="https://aerokube.com/selenoid/"><img src="images/Selenoid.svg" width="50" height="50"  alt="Selenoid" title="Selenoid"/></a>
 <a href="https://github.com/allure-framework/allure2"><img src="images/Allure_Report.svg" width="50" height="50"  alt="Allure" title="Allure"/></a>
 <a href="https://www.jenkins.io/"><img src="images/Jenkins.svg" width="50" height="50"  alt="Jenkins" title="Jenkins"/></a>
+<a href="https://rest-assured.io/"><img src="images/Rest-Assured.svg" width="50" height="50"  alt="Rest-Assured" title="Rest-Assured"/></a>
 </p>
 
 ## :pager: Примеры UI тестов
@@ -27,7 +28,10 @@
 - Проверка авторизации на сайте
 - Проверка поиска сущностей на сайте
 - Проверка работы пагинации
-- Скачивание документов, парсинг, ассерт содержимого
+- Проверка работоспособности капчи
+
+## :scroll: Примеры API тестов
+- Проверка поиска сущностей и разбора тела ответа
 
 ## <img src="images/Jenkins.svg" width="25" height="25"  alt="Jenkins" title="Jenkins"/></a> Сборка в Jenkins с параметрами
 <p align="center">
