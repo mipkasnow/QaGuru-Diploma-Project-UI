@@ -8,7 +8,6 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -17,13 +16,12 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.eshoprzd.data.Data.purchase1;
 import static ru.eshoprzd.data.Data.purchase2;
 import static ru.eshoprzd.tools.CustomAllureRestListener.withCustomTemplates;
-
+@DisplayName("Класс Апи тестов")
 public class ApiTests {
 
     @BeforeAll
