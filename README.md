@@ -4,9 +4,10 @@
 ## :world_map: Содержание
 - [Технологии и инструменты](#earth_africa-технологии-и-инструменты)
 - [Примеры UI тестов](#pager-Примеры-UI-тестов)
+- [Примеры API тестов](#scroll-Примеры-API-тестов)
 - [Сборка в Jenkins с параметрами](#-Сборка-в-Jenkins-с-параметрами)
 - [Allure отчет](#-Allure-отчет)
-- [Отчет в Telegram с помощью бота](#bell-Отчет-в-Telegram-с-помощью-бота)
+- [Отчет в Telegram с помощью бота](#-Отчет-в-Telegram-с-помощью-бота)
 - [Видео прохождения тестов на Selenoid](#film_projector-Видео-прохождения-тестов-на-Selenoid)
 
 ## :earth_africa: Технологии и инструменты
@@ -23,6 +24,20 @@
 <a href="https://rest-assured.io/"><img src="images/Rest-Assured.svg" width="50" height="50"  alt="Rest-Assured" title="Rest-Assured"/></a>
 </p>
 
+В данном проекте автотесты написаны на <code>Java</code> с использованием <code>Selenide</code> для UI-тестов и <code>Rest Assured</code> для API тестов
+>
+> <code>Selenoid</code> выполняет запуск браузеров в контейнерах <code>Docker</code>.
+>
+> <code>Allure Report</code> формирует отчет о запуске тестов.
+>
+> Для автоматизированной сборки проекта используется <code>Gradle</code>.
+>
+> В качестве библиотеки для модульного тестирования используется <code>JUnit 5</code>.
+>
+> <code>Jenkins</code> выполняет запуск тестов.
+> После завершения прогона отправляются уведомления с помощью бота в <code>Telegram</code>.
+
+
 ## :pager: Примеры UI тестов
 - Проверка работоспособности ссылок футера страницы
 - Проверка авторизации на сайте
@@ -31,7 +46,7 @@
 - Проверка работоспособности капчи
 
 ## :scroll: Примеры API тестов
-- Проверка поиска сущностей и разбора тела ответа
+- Проверка поиска сущностей и разбор тела ответа
 
 ## <img src="images/Jenkins.svg" width="25" height="25"  alt="Jenkins" title="Jenkins"/></a> Сборка в Jenkins с параметрами
 <p align="center">
@@ -43,7 +58,7 @@
 <img title="Allure отчет" src="images/Allure.PNG">
 </p>
 
-## :bell: Отчет в Telegram с помощью бота
+## <img width="4%" title="Telegram" src="images/Telegram.svg"> Отчет в Telegram с помощью бота
 <p>
 <img title="Отчет в Telegram с помощью бота" src="images/Telegram.PNG">
 </p>
@@ -52,3 +67,8 @@
 <p>
 <img title="Selenoid Video" src="images/Selenoid.gif" alt="video">
 </p>
+
+<h2>
+  :crystal_ball: Всю сборку можно запустить самостоятельно https://jenkins.autotests.cloud/job/mipkasnow-QaGuru-Diploma-Project-UI/ (необходимо предварительно  зарегистрироваться)
+  Отчет в телеграм придет в чат https://t.me/+z08EK641X7dmNjZi
+</h2>
