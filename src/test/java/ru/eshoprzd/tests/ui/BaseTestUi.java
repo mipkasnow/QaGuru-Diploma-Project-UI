@@ -25,7 +25,7 @@ public class BaseTestUi {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browserSize = size;
         Configuration.browser = browser;
-        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
