@@ -1,4 +1,4 @@
-package ru.eshoprzd.tests;
+package ru.eshoprzd.tests.ui;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -11,7 +11,7 @@ import ru.eshoprzd.tools.AllureHelpers;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class BaseTest {
+public class BaseTestUi {
 
     public static final int TIMEOUT_SMALL = 12;
     public static final int TIMEOUT_MEDIUM = 30;
@@ -25,7 +25,7 @@ public class BaseTest {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browserSize = size;
         Configuration.browser = browser;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

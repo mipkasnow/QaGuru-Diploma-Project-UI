@@ -1,4 +1,4 @@
-package ru.eshoprzd.methods;
+package ru.eshoprzd.methods.ui;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;

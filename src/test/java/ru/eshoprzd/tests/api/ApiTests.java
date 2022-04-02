@@ -1,16 +1,17 @@
-package ru.eshoprzd.tests;
+package ru.eshoprzd.tests.api;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
-import io.restassured.RestAssured;
+import io.restassured.internal.RestAssuredResponseImpl;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import ru.eshoprzd.methods.api.BaseTestApi;
+import ru.eshoprzd.methods.api.Rest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,12 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.eshoprzd.data.Data.*;
 import static ru.eshoprzd.tools.CustomAllureRestListener.withCustomTemplates;
 @DisplayName("Класс API тестов открытой части сайта")
-public class ApiTests {
-
-    @BeforeAll
-    public static void setup() {
-        RestAssured.baseURI = "https://eshoprzd.ru/rest";
-    }
+public class ApiTests extends BaseTestApi {
 
     @Tag("regress")
     @Feature("Апи тесты")
@@ -37,19 +33,9 @@ public class ApiTests {
     @ValueSource(strings = {purchase1, purchase2})
     @ParameterizedTest(name = "Ценовой запрос {0}")
     public void searchPurchaseTest(String searchValue){
-        Map<String, String> searchBody = new HashMap<>();
-        searchBody.put("search", searchValue);
-
-        Response response = (Response) given().relaxedHTTPSValidation()
-                .filter(withCustomTemplates())
-                .contentType(JSON)
-                .header("Type-Shop", "rzd")
-                .body(searchBody)
-                .when()
-                .post("elsearch/api/v1/searchPurchase")
-                .then()
-                .statusCode(200)
-                .extract().response();
+        Map<String, String> body = new HashMap<>();
+        body.put("search", searchValue);
+        Response response = new Rest().postSearchPurchase(body);
 
         JsonPath jsonPath = response.jsonPath();
         Boolean success = jsonPath.get("success");
@@ -65,19 +51,9 @@ public class ApiTests {
     @DisplayName("Поиск новости")
     @Test
     public void searchNewsTest(){
-        Map<String, String> searchBody = new HashMap<>();
-        searchBody.put("search", news1);
-
-        Response response = (Response) given().relaxedHTTPSValidation()
-                .filter(withCustomTemplates())
-                .contentType(JSON)
-                .header("Type-Shop", "rzd")
-                .body(searchBody)
-                .when()
-                .post("ccwe/news/newsPublishedList")
-                .then()
-                .statusCode(200)
-                .extract().response();
+        Map<String, String> body = new HashMap<>();
+        body.put("search", news1);
+        Response response = new Rest().postNewsPublishedList(body);
 
         JsonPath jsonPath = response.jsonPath();
         Boolean success = jsonPath.get("success");
@@ -100,16 +76,7 @@ public class ApiTests {
         body.put("text", "здравствуйте");
         body.put("captcha", "123");
 
-        Response response = (Response) given().relaxedHTTPSValidation()
-                .filter(withCustomTemplates())
-                .contentType(JSON)
-                .header("Type-Shop", "rzd")
-                .body(body)
-                .when()
-                .post("ccwe/publicity/sendFeedback")
-                .then()
-                .statusCode(200)
-                .extract().response();
+        Response response = new Rest().postSendFeedback(body);
 
         JsonPath jsonPath = response.jsonPath();
         Boolean success = jsonPath.get("success");
@@ -128,16 +95,7 @@ public class ApiTests {
         body.put("login", "123");
         body.put("password", "123");
 
-        Response response = (Response) given().relaxedHTTPSValidation()
-                .filter(withCustomTemplates())
-                .contentType(JSON)
-                .header("Type-Shop", "rzd")
-                .body(body)
-                .when()
-                .post("auth/api/user/login")
-                .then()
-                .statusCode(200)
-                .extract().response();
+        Response response = new Rest().postLogin(body);
 
         JsonPath jsonPath = response.jsonPath();
         Boolean success = jsonPath.get("success");
@@ -145,6 +103,5 @@ public class ApiTests {
 
         assertFalse(success);
         assertThat(message).isEqualTo("Не найдено имя пользователя или пароль");
-
     }
 }

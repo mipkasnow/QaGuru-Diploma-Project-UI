@@ -1,4 +1,4 @@
-package ru.eshoprzd.tests;
+package ru.eshoprzd.tests.ui;
 
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Disabled;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import ru.eshoprzd.methods.MainPage;
+import ru.eshoprzd.methods.ui.MainPage;
 import ru.eshoprzd.tools.LoadingBar;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.eshoprzd.data.Data.*;
 
 @DisplayName("Класс UI тестов открытой части сайта")
-public class MainPageTests extends BaseTest{
+public class MainPageTests extends BaseTestUi {
 
     MainPage step = new MainPage();
 
